@@ -1,13 +1,9 @@
 package com;
 
 class FizzBuzzNumber {
-    public static final String FIZZ_WORD = "Fizz";
-    public static final String BUZZ_WORD = "Buzz";
-    public static final int FIZZ_MULTIPLE = 3;
-    public static final int BUZZ_MULTIPLE = 5;
     private final int number;
 
-    private FizzBuzzNumber(int number) {
+    FizzBuzzNumber(int number) {
         this.number = number;
     }
 
@@ -18,23 +14,19 @@ class FizzBuzzNumber {
     }
 
     String fizzbuzz() {
-        if (isFizz() && isBuzz()) {
-            return FIZZ_WORD + BUZZ_WORD;
+        if (new Fizz().isFizz(new FizzBuzzNumber(number)) && new Buzz().isBuzz(new FizzBuzzNumber(number))) {
+            return Fizz.FIZZ_WORD + Buzz.BUZZ_WORD;
         }
-        if (isFizz()) {
-            return FIZZ_WORD;
+        if (new Fizz().isFizz(new FizzBuzzNumber(number))) {
+            return Fizz.FIZZ_WORD;
         }
-        if (isBuzz()) {
-            return BUZZ_WORD;
+        if (new Buzz().isBuzz(new FizzBuzzNumber(number))) {
+            return Buzz.BUZZ_WORD;
         }
         return number + "";
     }
 
-    private boolean isBuzz() {
-        return number % BUZZ_MULTIPLE == 0;
-    }
-
-    private boolean isFizz() {
-        return number % FIZZ_MULTIPLE == 0;
+    public int getNumber() {
+        return number;
     }
 }
