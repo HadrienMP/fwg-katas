@@ -28,6 +28,10 @@ public class TotoTest {
     public void _20_is_buzz() {
         Assert.assertEquals("Buzz", fizzbuzz(20));
     }
+    @Test
+    public void _15_is_fizzbuzz() {
+        Assert.assertEquals("FizzBuzz", fizzbuzz(15));
+    }
 
     @Test
     public void _1_is_1() {
@@ -56,7 +60,11 @@ public class TotoTest {
 
 
     private String fizzbuzz(int i) {
-        if (i == 3 || i == 6) {
+        if (i % 15  == 0) {
+            return "FizzBuzz";
+        }
+
+        if (i % 3  == 0) {
             return "Fizz";
         }
         if (i % 5 == 0) {
