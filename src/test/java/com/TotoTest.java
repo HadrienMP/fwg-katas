@@ -30,13 +30,13 @@ public class TotoTest {
     }
 
     @Test
-    public void _15_is_fizzbuzz() {
-        Assert.assertEquals("FizzBuzz", FizzBuzzNumber.of(15).fizzbuzz());
+    public void _100_is_Buzz() {
+        Assert.assertEquals("Buzz", FizzBuzzNumber.of(100).fizzbuzz());
     }
 
     @Test
-    public void _150_is_fizzbuzz() {
-        Assert.assertEquals("FizzBuzz", FizzBuzzNumber.of(150).fizzbuzz());
+    public void _15_is_fizzbuzz() {
+        Assert.assertEquals("FizzBuzz", FizzBuzzNumber.of(15).fizzbuzz());
     }
 
     @Test
@@ -79,34 +79,4 @@ public class TotoTest {
         FizzBuzzNumber.of(101).fizzbuzz();
     }
 
-    private static class FizzBuzzNumber {
-        private final int number;
-
-        private FizzBuzzNumber(int number) {
-            this.number = number;
-        }
-
-        private static FizzBuzzNumber of(int number) {
-            if (number <= 0) throw new IllegalArgumentException();
-            if (number == 101) throw new IllegalArgumentException();
-            return new FizzBuzzNumber(number);
-        }
-
-        public int getNumber() {
-            return number;
-        }
-
-        private String fizzbuzz() {
-            if (getNumber() % 3 == 0 && getNumber() % 5 == 0) {
-                return "FizzBuzz";
-            }
-            if (getNumber() % 3 == 0) {
-                return "Fizz";
-            }
-            if (getNumber() % 5 == 0) {
-                return "Buzz";
-            }
-            return getNumber() + "";
-        }
-    }
 }
