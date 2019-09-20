@@ -18,15 +18,23 @@ class FizzBuzzNumber {
     }
 
     String fizzbuzz() {
-        if (number % FIZZ_MULTIPLE == 0 && number % BUZZ_MULTIPLE == 0) {
+        if (isFizz() && isBuzz()) {
             return FIZZ_WORD + BUZZ_WORD;
         }
-        if (number % FIZZ_MULTIPLE == 0) {
+        if (isFizz()) {
             return FIZZ_WORD;
         }
-        if (number % BUZZ_MULTIPLE == 0) {
+        if (isBuzz()) {
             return BUZZ_WORD;
         }
         return number + "";
+    }
+
+    private boolean isBuzz() {
+        return number % BUZZ_MULTIPLE == 0;
+    }
+
+    private boolean isFizz() {
+        return number % FIZZ_MULTIPLE == 0;
     }
 }
