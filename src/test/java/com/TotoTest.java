@@ -12,9 +12,13 @@ public class TotoTest {
     public void _5_is_buzz() {
         Assert.assertEquals("Buzz", fizzbuzz(5));
     }
+    @Test
+    public void _10_is_buzz() {
+        Assert.assertEquals("Buzz", fizzbuzz(10));
+    }
 
     private String fizzbuzz(int i) {
-        if (i == 5) {
+        if (i == 5 || i == 10) {
             return "Buzz";
         }
         return "Fizz";
