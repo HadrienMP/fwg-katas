@@ -69,6 +69,11 @@ public class TotoTest {
         FizzBuzzNumber.of(0).fizzbuzz();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void _minus_1_is_fail() {
+        FizzBuzzNumber.of(-1).fizzbuzz();
+    }
+
     private static class FizzBuzzNumber {
         private final int number;
 
@@ -77,7 +82,7 @@ public class TotoTest {
         }
 
         private static FizzBuzzNumber of(int number) {
-            if (number == 0) throw new IllegalArgumentException();
+            if (number <= 0) throw new IllegalArgumentException();
             return new FizzBuzzNumber(number);
         }
 
