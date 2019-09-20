@@ -34,12 +34,34 @@ public class TotoTest {
         Assert.assertEquals("1", fizzbuzz(1));
     }
 
+    @Test
+    public void _2_is_2() {
+        Assert.assertEquals("2", fizzbuzz(2));
+    }
+
+    @Test
+    public void _4_is_4() {
+        Assert.assertEquals("4", fizzbuzz(4));
+    }
+
+    @Test
+    public void _7_is_7() {
+        Assert.assertEquals("7", fizzbuzz(7));
+    }
+
+    @Test
+    public void _8_is_8() {
+        Assert.assertEquals("8", fizzbuzz(8));
+    }
+
 
     private String fizzbuzz(int i) {
-        if (i==1) return "1";
+        if (i == 3 || i == 6) {
+            return "Fizz";
+        }
         if (i % 5 == 0) {
             return "Buzz";
         }
-        return "Fizz";
+        return i + "";
     }
 }
