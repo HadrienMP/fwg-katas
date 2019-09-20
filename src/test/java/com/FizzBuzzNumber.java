@@ -14,13 +14,13 @@ class FizzBuzzNumber {
     }
 
     String fizzbuzz() {
-        if (new Fizz().isFizz(new FizzBuzzNumber(number)) && new Buzz().isBuzz(new FizzBuzzNumber(number))) {
+        if (new Fizz().matches(new FizzBuzzNumber(number)) && new Buzz().matches(new FizzBuzzNumber(number))) {
             return Fizz.FIZZ_WORD + Buzz.BUZZ_WORD;
         }
-        if (new Fizz().isFizz(new FizzBuzzNumber(number))) {
+        if (new Fizz().matches(new FizzBuzzNumber(number))) {
             return Fizz.FIZZ_WORD;
         }
-        if (new Buzz().isBuzz(new FizzBuzzNumber(number))) {
+        if (new Buzz().matches(new FizzBuzzNumber(number))) {
             return Buzz.BUZZ_WORD;
         }
         return number + "";

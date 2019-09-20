@@ -1,10 +1,10 @@
 package com;
 
-public class Buzz implements Rule {
+public class Buzz {
     public static final int BUZZ_MULTIPLE = 5;
     public static final String BUZZ_WORD = "Buzz";
 
-    boolean isBuzz(FizzBuzzNumber fizzBuzzNumber) {
+    public boolean matches(FizzBuzzNumber fizzBuzzNumber) {
         return fizzBuzzNumber.getNumber() % BUZZ_MULTIPLE == 0;
     }
 }
