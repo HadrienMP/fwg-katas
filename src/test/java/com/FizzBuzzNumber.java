@@ -1,6 +1,10 @@
 package com;
 
 class FizzBuzzNumber {
+    public static final String FIZZ_WORD = "Fizz";
+    public static final String BUZZ_WORD = "Buzz";
+    public static final int FIZZ_MULTIPLE = 3;
+    public static final int BUZZ_MULTIPLE = 5;
     private final int number;
 
     private FizzBuzzNumber(int number) {
@@ -14,14 +18,14 @@ class FizzBuzzNumber {
     }
 
     String fizzbuzz() {
-        if (number % 3 == 0 && number % 5 == 0) {
-            return "FizzBuzz";
+        if (number % FIZZ_MULTIPLE == 0 && number % BUZZ_MULTIPLE == 0) {
+            return FIZZ_WORD + BUZZ_WORD;
         }
-        if (number % 3 == 0) {
-            return "Fizz";
+        if (number % FIZZ_MULTIPLE == 0) {
+            return FIZZ_WORD;
         }
-        if (number % 5 == 0) {
-            return "Buzz";
+        if (number % BUZZ_MULTIPLE == 0) {
+            return BUZZ_WORD;
         }
         return number + "";
     }
