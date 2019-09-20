@@ -29,7 +29,14 @@ public class TotoTest {
         Assert.assertEquals("Buzz", fizzbuzz(20));
     }
 
+    @Test
+    public void _1_is_1() {
+        Assert.assertEquals("1", fizzbuzz(1));
+    }
+
+
     private String fizzbuzz(int i) {
+        if (i==1) return "1";
         if (i % 5 == 0) {
             return "Buzz";
         }
