@@ -1,6 +1,8 @@
 package com;
 
 class FizzBuzzNumber {
+    public static final Fizz FIZZ = new Fizz();
+    public static final Buzz BUZZ = new Buzz();
     private final int number;
 
     FizzBuzzNumber(int number) {
@@ -14,13 +16,13 @@ class FizzBuzzNumber {
     }
 
     String fizzbuzz() {
-        if (new Fizz().matches(new FizzBuzzNumber(number)) && new Buzz().matches(new FizzBuzzNumber(number))) {
+        if (FIZZ.matches(this) && BUZZ.matches(this)) {
             return Fizz.FIZZ_WORD + Buzz.BUZZ_WORD;
         }
-        if (new Fizz().matches(new FizzBuzzNumber(number))) {
+        if (FIZZ.matches(this)) {
             return Fizz.FIZZ_WORD;
         }
-        if (new Buzz().matches(new FizzBuzzNumber(number))) {
+        if (BUZZ.matches(this)) {
             return Buzz.BUZZ_WORD;
         }
         return number + "";
