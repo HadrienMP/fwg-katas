@@ -58,7 +58,21 @@ public class Specification {
         assertThat(toto).isEqualTo(0);
     }
 
+
+    @Test
+    public void first_hour_is_free_adsgasg() {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(121);
+
+        Long toto = toto(arrival, departure);
+
+        assertThat(toto).isEqualTo(4);
+    }
+
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
+        if (Duration.between(arrival, departure).toMinutes() >= 121) {
+            return 400L;
+        }
         if (Duration.between(arrival, departure).toMinutes() >= 61) {
             return 200L;
         }
