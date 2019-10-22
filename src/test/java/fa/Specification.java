@@ -1,6 +1,7 @@
 package fa;
 
 import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -59,9 +60,12 @@ public class Specification {
     }
 
     @Test
-    public void the_price_is_4_euros_for_a_stay_of_3_started_hours() {
+    @Parameters({
+            "121", "122"
+    })
+    public void the_price_is_4_euros_for_a_stay_of_3_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusHours(2).plusMinutes(1);
+        LocalDateTime departure = arrival.plusMinutes(minutes);
         ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
 
         assertThat(parkingTicket.price()).isEqualTo(400);
