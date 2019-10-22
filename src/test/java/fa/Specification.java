@@ -41,6 +41,18 @@ public class Specification {
 
     @Test
     @Parameters({
+            "1", "2", "59"
+    })
+    public void the_price_is_free_for_a_stay_of_1_started_hours(int minutes) {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(minutes);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+
+        assertThat(parkingTicket.price()).isEqualTo(0);
+    }
+
+    @Test
+    @Parameters({
             "61", "62", "119"
     })
     public void the_price_is_2_euros_for_a_stay_of_2_started_hours(int minutes) {
