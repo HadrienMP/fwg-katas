@@ -61,10 +61,9 @@ public class Specification {
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours() {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(121);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
 
-        Long toto = new ParkingTicket(arrival, departure).price();
-
-        assertThat(toto).isEqualTo(400);
+        assertThat(parkingTicket.price()).isEqualTo(400);
     }
 
     private static class ParkingTicket {
