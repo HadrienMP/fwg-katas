@@ -16,9 +16,19 @@ public class Specification {
      */
 
     @Test
-    public void first_hour_is_free() {
+    public void less_than_an_hour_is_free() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
         LocalDateTime departure = arrival.plusMinutes(1);
+
+        Long toto = new ParkingTicket(arrival, departure).price();
+
+        assertThat(toto).isEqualTo(0);
+    }
+
+    @Test
+    public void first_hour_is_free() {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusHours(1);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
@@ -43,17 +53,6 @@ public class Specification {
         Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(200);
-    }
-
-
-    @Test
-    public void first_hour_is_free_included() {
-        LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusHours(1);
-
-        Long toto = new ParkingTicket(arrival, departure).price();
-
-        assertThat(toto).isEqualTo(0);
     }
 
     @Test
