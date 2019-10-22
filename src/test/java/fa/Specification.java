@@ -26,9 +26,9 @@ public class Specification {
     }
 
     @Test
-    public void first_hour_is_free() {
+    public void the_first_minute_of_the_second_hour_is_still_free() {
         LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusHours(1);
+        LocalDateTime departure = arrival.plusHours(1).plusSeconds(59);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
