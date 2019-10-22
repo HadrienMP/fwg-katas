@@ -60,13 +60,13 @@ public class Specification {
 
 
     @Test
-    public void first_hour_is_free_adsgasg() {
+    public void the_price_is_4_euros_for_a_stay_of_3_started_hours() {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(121);
 
         Long toto = toto(arrival, departure);
 
-        assertThat(toto).isEqualTo(4);
+        assertThat(toto).isEqualTo(400);
     }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
