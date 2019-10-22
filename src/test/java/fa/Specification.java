@@ -79,10 +79,10 @@ public class Specification {
 
         private Long price() {
             if (Duration.between(arrival, departure).toMinutes() > 2 * 60) {
-                return 400L;
+                return 2 * 200L;
             }
-            if (Duration.between(arrival, departure).toMinutes() > 60) {
-                return 200L;
+            if (Duration.between(arrival, departure).toMinutes() > 1 * 60) {
+                return 1 * 200L;
             }
             return 0L;
         }
