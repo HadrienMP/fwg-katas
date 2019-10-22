@@ -1,9 +1,12 @@
 package fa;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class Specification {
     /*
@@ -20,9 +23,10 @@ public class Specification {
 
         Long toto = toto(arrival, departure);
 
+        assertThat(toto).isEqualTo(0);
     }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
-        return null;
+        return 0L;
     }
 }
