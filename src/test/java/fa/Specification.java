@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.*;
 
 @RunWith(JUnitParamsRunner.class)
 public class Specification {
+
     /*
     Un parking applique le tarif suivant à ses usagers :
         la première heure est gratuite
         2 euros par heure entamée jusqu'a 4 h
         1,5 euros par demie heure entamée au-dela de 4h
      */
-
     @Test
     public void less_than_an_hour_is_free() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
@@ -43,7 +43,7 @@ public class Specification {
     @Parameters({
             "1", "2", "59"
     })
-    public void the_price_is_free_for_a_stay_of_1_started_hours(int minutes) {
+    public void free_for_a_stay_of_1_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
         ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
