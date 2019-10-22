@@ -27,7 +27,7 @@ public class Specification {
         assertThat(toto).isEqualTo(0);
     }
     @Test
-    public void tot() {
+    public void second_hour_is_2_euros() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
         LocalDateTime departure = arrival.plusMinutes(61);
 
