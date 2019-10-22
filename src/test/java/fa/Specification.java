@@ -1,12 +1,15 @@
 package fa;
 
+import junitparams.JUnitParamsRunner;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.*;
 
+@RunWith(JUnitParamsRunner.class)
 public class Specification {
     /*
     Un parking applique le tarif suivant à ses usagers :
