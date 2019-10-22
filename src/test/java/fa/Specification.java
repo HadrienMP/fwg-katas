@@ -59,7 +59,7 @@ public class Specification {
     }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
-        if (Duration.between(arrival, departure).toMinutes() == 61 || Duration.between(arrival, departure).toMinutes() == 62) {
+        if (Duration.between(arrival, departure).toMinutes() >= 61) {
             return 200L;
         }
         return 0L;
