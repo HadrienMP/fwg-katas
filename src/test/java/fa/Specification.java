@@ -26,6 +26,7 @@ public class Specification {
 
         assertThat(toto).isEqualTo(0);
     }
+
     @Test
     public void second_hour_is_2_euros() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
@@ -34,6 +35,17 @@ public class Specification {
         Long toto = toto(arrival, departure);
 
         assertThat(toto).isEqualTo(200);
+    }
+
+
+    @Test
+    public void first_hour_is_free_included() {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(60);
+
+        Long toto = toto(arrival, departure);
+
+        assertThat(toto).isEqualTo(0);
     }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
