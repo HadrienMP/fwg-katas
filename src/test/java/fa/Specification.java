@@ -20,13 +20,16 @@ public class Specification {
         1,5 euros par demie heure entamée au-dela de 4h
      */
     @Test
-    public void the_first_minute_of_the_second_hour_is_still_free() {
+    @Parameters({
+            "60,0", "120,200", "180,400"
+    })
+    public void the_first_minute_of_the_second_hour_is_still_free(int minutes, int price) {
         LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusHours(1).plusSeconds(59);
+        LocalDateTime departure = arrival.plusMinutes(minutes).plusSeconds(59);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
-        assertThat(toto).isEqualTo(0);
+        assertThat(toto).isEqualTo(price);
     }
 
     @Test
