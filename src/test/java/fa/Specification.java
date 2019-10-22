@@ -37,6 +37,16 @@ public class Specification {
         assertThat(toto).isEqualTo(200);
     }
 
+    @Test
+    public void second_hour_is_2_euros_() {
+        LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
+        LocalDateTime departure = arrival.plusMinutes(62);
+
+        Long toto = toto(arrival, departure);
+
+        assertThat(toto).isEqualTo(200);
+    }
+
 
     @Test
     public void first_hour_is_free_included() {
@@ -49,7 +59,7 @@ public class Specification {
     }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
-        if (Duration.between(arrival, departure).toMinutes() == 61 ) {
+        if (Duration.between(arrival, departure).toMinutes() == 61 || Duration.between(arrival, departure).toMinutes() == 62) {
             return 200L;
         }
         return 0L;
