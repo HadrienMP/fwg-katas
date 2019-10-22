@@ -82,11 +82,14 @@ public class Specification {
             if (between.toMinutes() == 180) {
                 return 400L;
             }
+            if (between.toMinutes() == 120) {
+                return 200L;
+            }
             if (between.toMinutes() > 2 * 60) {
-                return (between.toHours()) * 200L;
+                return between.toHours() * 200L;
             }
             if (between.toMinutes() > 1 * 60) {
-                return 1 * 200L;
+                return between.toHours() * 200L;
             }
             return 0L;
         }
