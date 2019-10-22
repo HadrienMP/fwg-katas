@@ -28,7 +28,7 @@ public class Specification {
     @Test
     public void second_hour_is_2_euros() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
-        LocalDateTime departure = arrival.plusMinutes(61);
+        LocalDateTime departure = arrival.plusHours(1).plusMinutes(1);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
@@ -38,7 +38,7 @@ public class Specification {
     @Test
     public void second_hour_is_2_euros_() {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
-        LocalDateTime departure = arrival.plusMinutes(62);
+        LocalDateTime departure = arrival.plusHours(1).plusMinutes(2);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
@@ -49,7 +49,7 @@ public class Specification {
     @Test
     public void first_hour_is_free_included() {
         LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusMinutes(60);
+        LocalDateTime departure = arrival.plusHours(1);
 
         Long toto = new ParkingTicket(arrival, departure).price();
 
@@ -60,7 +60,7 @@ public class Specification {
     @Test
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours() {
         LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusMinutes(121);
+        LocalDateTime departure = arrival.plusHours(2).plusMinutes(1);
         ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
 
         assertThat(parkingTicket.price()).isEqualTo(400);
