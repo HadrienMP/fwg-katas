@@ -56,7 +56,6 @@ public class Specification {
         assertThat(toto).isEqualTo(0);
     }
 
-
     @Test
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours() {
         LocalDateTime arrival = LocalDateTime.now();
@@ -76,10 +75,10 @@ public class Specification {
         }
 
         private Long price() {
-            if (Duration.between(arrival, departure).toMinutes() >= 121) {
+            if (Duration.between(arrival, departure).toMinutes() >= 2 * 60 + 1) {
                 return 400L;
             }
-            if (Duration.between(arrival, departure).toMinutes() >= 61) {
+            if (Duration.between(arrival, departure).toMinutes() >= 60 + 1) {
                 return 200L;
             }
             return 0L;
