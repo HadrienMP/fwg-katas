@@ -1,10 +1,8 @@
 package fa;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.*;
@@ -22,7 +20,7 @@ public class Specification {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
         LocalDateTime departure = arrival.plusMinutes(1);
 
-        Long toto = toto(arrival, departure);
+        Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(0);
     }
@@ -32,7 +30,7 @@ public class Specification {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
         LocalDateTime departure = arrival.plusMinutes(61);
 
-        Long toto = toto(arrival, departure);
+        Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(200);
     }
@@ -42,7 +40,7 @@ public class Specification {
         LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
         LocalDateTime departure = arrival.plusMinutes(62);
 
-        Long toto = toto(arrival, departure);
+        Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(200);
     }
@@ -53,7 +51,7 @@ public class Specification {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(60);
 
-        Long toto = toto(arrival, departure);
+        Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(0);
     }
@@ -64,18 +62,28 @@ public class Specification {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(121);
 
-        Long toto = toto(arrival, departure);
+        Long toto = new ParkingTicket(arrival, departure).price();
 
         assertThat(toto).isEqualTo(400);
     }
 
-    private Long toto(LocalDateTime arrival, LocalDateTime departure) {
-        if (Duration.between(arrival, departure).toMinutes() >= 121) {
-            return 400L;
+    private static class ParkingTicket {
+        private final LocalDateTime arrival;
+        private final LocalDateTime departure;
+
+        private ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
+            this.arrival = arrival;
+            this.departure = departure;
         }
-        if (Duration.between(arrival, departure).toMinutes() >= 61) {
-            return 200L;
+
+        private Long price() {
+            if (Duration.between(arrival, departure).toMinutes() >= 121) {
+                return 400L;
+            }
+            if (Duration.between(arrival, departure).toMinutes() >= 61) {
+                return 200L;
+            }
+            return 0L;
         }
-        return 0L;
     }
 }
