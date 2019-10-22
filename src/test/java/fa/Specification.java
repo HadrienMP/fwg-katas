@@ -61,7 +61,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "121", "122"
+            "121", "122", "179"
     })
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
