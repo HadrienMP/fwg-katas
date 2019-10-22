@@ -1,4 +1,4 @@
-package com;
+package com.fizzbuzz;
 
 public class Buzz implements Rule {
     public static final int BUZZ_MULTIPLE = 5;
