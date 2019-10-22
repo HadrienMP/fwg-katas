@@ -40,23 +40,15 @@ public class Specification {
     }
 
     @Test
-    public void second_hour_is_2_euros() {
-        LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
-        LocalDateTime departure = arrival.plusHours(1).plusMinutes(1);
+    @Parameters({
+            "61", "62", "119"
+    })
+    public void the_price_is_2_euros_for_a_stay_of_2_started_hours(int minutes) {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(minutes);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
 
-        Long toto = new ParkingTicket(arrival, departure).price();
-
-        assertThat(toto).isEqualTo(200);
-    }
-
-    @Test
-    public void second_hour_is_2_euros_() {
-        LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
-        LocalDateTime departure = arrival.plusHours(1).plusMinutes(2);
-
-        Long toto = new ParkingTicket(arrival, departure).price();
-
-        assertThat(toto).isEqualTo(200);
+        assertThat(parkingTicket.price()).isEqualTo(200);
     }
 
     @Test
