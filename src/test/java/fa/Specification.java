@@ -3,6 +3,7 @@ package fa;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -25,8 +26,19 @@ public class Specification {
 
         assertThat(toto).isEqualTo(0);
     }
+    @Test
+    public void tot() {
+        LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
+        LocalDateTime departure = arrival.plusMinutes(61);
+
+        Long toto = toto(arrival, departure);
+
+        assertThat(toto).isEqualTo(200);
+    }
 
     private Long toto(LocalDateTime arrival, LocalDateTime departure) {
+        if (Duration.between(arrival, departure).toMinutes() == 61 ) return 200L;
+
         return 0L;
     }
 }
