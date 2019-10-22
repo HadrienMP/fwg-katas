@@ -2,6 +2,9 @@ package fa;
 
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Specification {
     /*
     Un parking applique le tarif suivant à ses usagers :
@@ -12,6 +15,14 @@ public class Specification {
 
     @Test
     public void first_hour_is_free() {
+        LocalDateTime arrival = LocalDateTime.now().minusMinutes(1);
+        LocalDateTime departure = arrival.plusMinutes(1);
 
+        Long toto = toto(arrival, departure);
+
+    }
+
+    private Long toto(LocalDateTime arrival, LocalDateTime departure) {
+        return null;
     }
 }
