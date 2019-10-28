@@ -1,4 +1,4 @@
-package com;
+package com.fizzbuzz;
 
 public class Fizz implements Rule {
     public static final String FIZZ_WORD = "Fizz";

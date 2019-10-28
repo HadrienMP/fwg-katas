@@ -1,4 +1,4 @@
-package com;
+package com.fizzbuzz;
 
 class FizzBuzzNumber {
     private static final Rule FIZZ = new Fizz();
