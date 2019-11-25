@@ -82,7 +82,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "211", "212"
+            "211", "212", "213"
     })
     public void the_price_is_7_euros_50_for_a_stay_of_4h30_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -103,7 +103,7 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
-            if (timeInParking.toMinutes() == 211 || timeInParking.toMinutes() == 212) return 750l;
+            if (timeInParking.toMinutes() == 211 || timeInParking.toMinutes() == 212 || timeInParking.toMinutes() == 213) return 750l;
             long billableHours = startedHours(timeInParking) - 1;
             return billableHours * 200L;
         }
