@@ -90,12 +90,11 @@ public class Specification {
         }
 
         private Long price() {
-            long billableHours = startedHours() - 1;
+            long billableHours = startedHours(Duration.between(arrival, departure)) - 1;
             return billableHours * 200L;
         }
 
-        private long startedHours() {
-            Duration between = Duration.between(arrival, departure);
+        private long startedHours(Duration between) {
             return between.toMinutes() % 60 == 0 ? between.toHours(): between.toHours() + 1;
         }
     }
