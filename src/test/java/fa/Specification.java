@@ -115,8 +115,8 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
-            if (timeInParking.toMinutes() > 240) return 900L;
-            if (timeInParking.toMinutes() > 210) return 750L;
+            if (timeInParking.toMinutes() > 240) return 600 + 2 * 150L;
+            if (timeInParking.toMinutes() > 210) return 600 + 150L;
             long billableHours = startedHours(timeInParking) - 1;
             return billableHours * 200L;
         }
