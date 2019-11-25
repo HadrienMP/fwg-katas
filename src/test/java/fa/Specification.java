@@ -82,9 +82,9 @@ public class Specification {
 
     @Test
     @Parameters({
-            "211", "212", "213"
+            "211", "212", "213", "239"
     })
-    public void the_price_is_7_euros_50_for_a_stay_of_4h30_started_hours(int minutes) {
+    public void the_price_is_7_euros_50_for_a_stay_of_4_started_hours_and_a_half(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
         ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
@@ -94,7 +94,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "241"
+            "241", "242", "243"
     })
     public void the_price_is_9_euros_for_a_stay_of_5_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -115,8 +115,8 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
-            if (timeInParking.toMinutes() > 240) return 900l;
-            if (timeInParking.toMinutes() > 210) return 750l;
+            if (timeInParking.toMinutes() > 240) return 900L;
+            if (timeInParking.toMinutes() > 210) return 750L;
             long billableHours = startedHours(timeInParking) - 1;
             return billableHours * 200L;
         }
