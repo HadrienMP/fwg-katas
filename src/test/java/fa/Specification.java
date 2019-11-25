@@ -79,16 +79,13 @@ public class Specification {
 
         private Long price() {
             Duration between = Duration.between(arrival, departure);
-            long l = between.toHours() % 60 == 0 ? between.toHours() : between.toHours() - 1;
+            long l = between.toMinutes() % 60 == 0 ? between.toHours() -1 : between.toHours();
 
             if (between.toMinutes() == 180) {
                 return l * 200L;
             }
             if (between.toMinutes() == 120) {
                 return l * 200L;
-            }
-            if (between.toMinutes() > 1 * 60) {
-                return between.toHours() * 200L;
             }
             return l* 200L;
         }
