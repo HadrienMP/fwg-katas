@@ -90,7 +90,8 @@ public class Specification {
         }
 
         private Long price() {
-            long billableHours = startedHours(Duration.between(arrival, departure)) - 1;
+            Duration timeInParking = Duration.between(arrival, departure);
+            long billableHours = startedHours(timeInParking) - 1;
             return billableHours * 200L;
         }
 
