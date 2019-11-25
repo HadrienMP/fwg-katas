@@ -78,9 +78,14 @@ public class Specification {
         }
 
         private Long price() {
-            Duration between = Duration.between(arrival, departure);
-            long l = between.toMinutes() % 60 == 0 ? between.toHours() -1 : between.toHours();
+            long l = startedHours();
+            l--;
             return l * 200L;
+        }
+
+        private long startedHours() {
+            Duration between = Duration.between(arrival, departure);
+            return between.toMinutes() % 60 == 0 ? between.toHours(): between.toHours() + 1;
         }
     }
 }
