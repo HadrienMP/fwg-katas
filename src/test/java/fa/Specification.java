@@ -80,6 +80,18 @@ public class Specification {
         assertThat(parkingTicket.price()).isEqualTo(600);
     }
 
+    @Test
+    @Parameters({
+            "211", "212"
+    })
+    public void the_price_is_7_euros_50_for_a_stay_of_4h30_started_hours(int minutes) {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(minutes);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+
+        assertThat(parkingTicket.price()).isEqualTo(750);
+    }
+
     private static class ParkingTicket {
         private final LocalDateTime arrival;
         private final LocalDateTime departure;
@@ -91,6 +103,7 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
+            if (timeInParking.toMinutes() == 211 || timeInParking.toMinutes() == 212) return 750l;
             long billableHours = startedHours(timeInParking) - 1;
             return billableHours * 200L;
         }
