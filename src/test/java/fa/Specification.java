@@ -68,6 +68,18 @@ public class Specification {
         assertThat(parkingTicket.price()).isEqualTo(400);
     }
 
+    @Test
+    @Parameters({
+            "181"
+    })
+    public void the_price_is_6_euros_for_a_stay_of_4_started_hours(int minutes) {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(minutes);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+
+        assertThat(parkingTicket.price()).isEqualTo(600);
+    }
+
     private static class ParkingTicket {
         private final LocalDateTime arrival;
         private final LocalDateTime departure;
