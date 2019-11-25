@@ -87,9 +87,6 @@ public class Specification {
             if (between.toMinutes() == 120) {
                 return l * 200L;
             }
-            if (between.toMinutes() > 2 * 60) {
-                return between.toHours() * 200L;
-            }
             if (between.toMinutes() > 1 * 60) {
                 return between.toHours() * 200L;
             }
