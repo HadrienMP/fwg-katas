@@ -78,9 +78,8 @@ public class Specification {
         }
 
         private Long price() {
-            long l = startedHours();
-            l--;
-            return l * 200L;
+            long billableHours = startedHours() - 1;
+            return billableHours * 200L;
         }
 
         private long startedHours() {
