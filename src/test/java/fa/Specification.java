@@ -99,11 +99,15 @@ public class Specification {
         }
 
         private Long price() {
-            TimeInParking timeInParking = TimeInParking.of(arrival, departure);
+            TimeInParking timeInParking = timeInParking();
 
             long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
             long billableHalfHours = timeInParking.halfHoursAfter(FULL_HOUR_PRICE_TIME_LIMIT);
             return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
+        }
+
+        private TimeInParking timeInParking() {
+            return TimeInParking.of(arrival, departure);
         }
 
         private static class TimeInParking {
