@@ -23,6 +23,8 @@ class ParkingTicket {
     }
 
     Long price() {
+        if (motorcycle!=null) return 100L;
+
         TimeInParking timeInParking = timeInParking();
 
         long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
