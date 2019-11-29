@@ -19,7 +19,7 @@ public class Specification {
     public void free_for_a_stay_of_1_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(0);
     }
@@ -31,7 +31,7 @@ public class Specification {
     public void the_price_is_2_euros_for_a_stay_of_2_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(200);
     }
@@ -43,7 +43,7 @@ public class Specification {
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(400);
     }
@@ -55,7 +55,7 @@ public class Specification {
     public void the_price_is_6_euros_for_a_stay_of_4_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(600);
     }
@@ -68,7 +68,7 @@ public class Specification {
     public void the_price_is_7_euros_50_for_a_stay_of_4_started_hours_and_a_half(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(750);
     }
@@ -80,7 +80,7 @@ public class Specification {
     public void the_price_is_9_euros_for_a_stay_of_5_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, false);
 
         assertThat(parkingTicket.price()).isEqualTo(900);
     }

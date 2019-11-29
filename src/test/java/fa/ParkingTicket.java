@@ -11,10 +11,6 @@ class ParkingTicket {
     private final LocalDateTime departure;
     private boolean motoSmell;
 
-    ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
-        this(arrival, departure, false);
-    }
-
     public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, boolean motoSmell) {
         this.arrival = arrival;
         this.departure = departure;
@@ -22,7 +18,7 @@ class ParkingTicket {
     }
 
     Long price() {
-        if (motoSmell) return new ParkingTicket(arrival, departure).price() / 2;
+        if (motoSmell) return new ParkingTicket(arrival, departure, false).price() / 2;
 
         TimeInParking timeInParking = timeInParking();
 
