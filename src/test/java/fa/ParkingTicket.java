@@ -12,8 +12,7 @@ class ParkingTicket {
     private boolean motoSmell;
 
     ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
-        this.arrival = arrival;
-        this.departure = departure;
+        this(arrival, departure, false);
     }
 
     public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, boolean motoSmell) {
