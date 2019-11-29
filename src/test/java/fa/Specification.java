@@ -98,8 +98,11 @@ public class Specification {
         }
 
         private Long price() {
-            Duration timeInParking = Duration.between(arrival, departure);
-            return new TimeInParking(timeInParking).price();
+            TimeInParking timeInParking = new TimeInParking(Duration.between(arrival, departure));
+
+            long billableHours = timeInParking.billableHours();
+            long billableHalfHours = timeInParking.billableHalfHours();
+            return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
         }
 
         private static class TimeInParking {
@@ -122,11 +125,6 @@ public class Specification {
                 return timeInParking;
             }
 
-            private Long price() {
-                long billableHours = new TimeInParking(getTimeInParking()).billableHours();
-                long billableHalfHours = new TimeInParking(getTimeInParking()).billableHalfHours();
-                return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
-            }
         }
 
     }
