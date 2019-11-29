@@ -9,10 +9,17 @@ class ParkingTicket {
     private static final Duration FULL_HOUR_PRICE_TIME_LIMIT = Duration.ofHours(4);
     private final LocalDateTime arrival;
     private final LocalDateTime departure;
+    private String motorcycle;
 
     ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
         this.arrival = arrival;
         this.departure = departure;
+    }
+
+    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, String motorcycle) {
+        this.arrival = arrival;
+        this.departure = departure;
+        this.motorcycle = motorcycle;
     }
 
     Long price() {
