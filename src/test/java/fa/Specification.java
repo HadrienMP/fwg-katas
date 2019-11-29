@@ -99,16 +99,7 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
-            return new TimeInParking(timeInParking).price(this);
-        }
-
-        private static long billableHours(Duration timeInParking) {
-            return Math.min(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL, timeInParking.toHours());
-        }
-
-        private static long billableHalfHours(Duration timeInParking) {
-            long billableHalfHours = timeInParking.minus(Duration.ofHours(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL)).toMinutes() / 30;
-            return Math.max(0, billableHalfHours);
+            return new TimeInParking(timeInParking).price();
         }
 
         private static class TimeInParking {
@@ -118,13 +109,22 @@ public class Specification {
                 this.timeInParking = timeInParking;
             }
 
+            private long billableHalfHours() {
+                long billableHalfHours = getTimeInParking().minus(Duration.ofHours(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL)).toMinutes() / 30;
+                return Math.max(0, billableHalfHours);
+            }
+
+            private long billableHours() {
+                return Math.min(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL, getTimeInParking().toHours());
+            }
+
             public Duration getTimeInParking() {
                 return timeInParking;
             }
 
-            private Long price(ParkingTicket parkingTicket) {
-                long billableHours = ParkingTicket.billableHours(getTimeInParking());
-                long billableHalfHours = ParkingTicket.billableHalfHours(getTimeInParking());
+            private Long price() {
+                long billableHours = new TimeInParking(getTimeInParking()).billableHours();
+                long billableHalfHours = new TimeInParking(getTimeInParking()).billableHalfHours();
                 return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
             }
         }
