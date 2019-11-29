@@ -13,25 +13,6 @@ import static org.assertj.core.api.Assertions.*;
 @RunWith(JUnitParamsRunner.class)
 public class Specification {
 
-    /*
-    Un parking applique le tarif suivant à ses usagers :
-        la première heure est gratuite
-        2 euros par heure entamée jusqu'a 4 h
-        1,5 euros par demie heure entamée au-dela de 4h
-     */
-    @Test
-    @Parameters({
-            "60,200", "120,400", "180,600"
-    })
-    public void the_first_minute_of_the_second_hour_is_still_free(int minutes, int price) {
-        LocalDateTime arrival = LocalDateTime.now();
-        LocalDateTime departure = arrival.plusMinutes(minutes).plusSeconds(59);
-
-        Long toto = new ParkingTicket(arrival, departure).price();
-
-        assertThat(toto).isEqualTo(price);
-    }
-
     @Test
     @Parameters({
             "1", "2", "59"
@@ -46,7 +27,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "61", "62", "119"
+            "60", "61", "62", "119"
     })
     public void the_price_is_2_euros_for_a_stay_of_2_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -58,7 +39,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "121", "122", "179"
+           "120", "121", "122", "179"
     })
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -70,7 +51,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "181", "182", "209"
+           "180", "181", "182", "209"
     })
     public void the_price_is_6_euros_for_a_stay_of_4_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
