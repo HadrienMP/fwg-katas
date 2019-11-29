@@ -39,7 +39,7 @@ public class Specification {
 
     @Test
     @Parameters({
-           "120", "121", "122", "179"
+            "120", "121", "122", "179"
     })
     public void the_price_is_4_euros_for_a_stay_of_3_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -51,7 +51,7 @@ public class Specification {
 
     @Test
     @Parameters({
-           "180", "181", "182", "209"
+            "180", "181", "182", "209"
     })
     public void the_price_is_6_euros_for_a_stay_of_4_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -100,10 +100,17 @@ public class Specification {
         }
 
         private Long price(Duration timeInParking) {
-            if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 2 * 30) return price(Duration.ofHours(3)) + 2 * 150L;
-            if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 1 * 30) return price(Duration.ofHours(3)) + 1 * 150L;
+            if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes()) {
+
+
+                if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 2 * 30)
+                    return price(Duration.ofHours(3)) + 2 * 150L;
+                if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 1 * 30)
+                    return price(Duration.ofHours(3)) + 1 * 150L;
+            }
             long billableHours = timeInParking.toHours();
-            return billableHours * 200L;
+            int billableHalfHours = 0;
+            return billableHours * 200L + billableHalfHours * 150L;
         }
 
     }
