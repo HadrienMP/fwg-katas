@@ -1,18 +1,14 @@
 package fa;
 
-import java.time.LocalDateTime;
-
 class MotorcycleParkingTicket {
-    private final LocalDateTime arrival;
-    private final LocalDateTime departure;
+    private final ParkingTicket parkingTicket;
 
-    public MotorcycleParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
-        this.arrival = arrival;
-        this.departure = departure;
+    public MotorcycleParkingTicket(ParkingTicket parkingTicket) {
+        this.parkingTicket = parkingTicket;
     }
 
     Long price() {
-        return new ParkingTicket(arrival, departure).price() / 2;
+        return parkingTicket.price() / 2;
     }
 
 }
