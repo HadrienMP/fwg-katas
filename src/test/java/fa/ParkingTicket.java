@@ -9,21 +9,21 @@ class ParkingTicket {
     private static final Duration FULL_HOUR_PRICE_TIME_LIMIT = Duration.ofHours(4);
     private final LocalDateTime arrival;
     private final LocalDateTime departure;
-    private String motorcycle;
+    private boolean motoSmell;
 
     ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
         this.arrival = arrival;
         this.departure = departure;
     }
 
-    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, String motorcycle) {
+    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, boolean motoSmell) {
         this.arrival = arrival;
         this.departure = departure;
-        this.motorcycle = motorcycle;
+        this.motoSmell = motoSmell;
     }
 
     Long price() {
-        if (motorcycle != null) return new ParkingTicket(arrival, departure).price() / 2;
+        if (motoSmell) return new ParkingTicket(arrival, departure).price() / 2;
 
         TimeInParking timeInParking = timeInParking();
 

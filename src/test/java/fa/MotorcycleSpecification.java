@@ -19,7 +19,7 @@ public class MotorcycleSpecification {
     public void the_price_is_1_euros_for_a_stay_of_2_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, "Motorcycle");
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, "Motorcycle" != null);
 
         assertThat(parkingTicket.price()).isEqualTo(100);
     }
@@ -31,7 +31,7 @@ public class MotorcycleSpecification {
     public void the_first_hour_is_free(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, "Motorcycle");
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, "Motorcycle" != null);
 
         assertThat(parkingTicket.price()).isEqualTo(0);
     }
