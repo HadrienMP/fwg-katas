@@ -86,6 +86,8 @@ public class Specification {
     }
 
     private static class ParkingTicket {
+        private static final long FULL_HOUR_PRICE = 200L;
+        private static final long HALF_HOUR_PRICE = 150L;
         private final LocalDateTime arrival;
         private final LocalDateTime departure;
 
@@ -102,7 +104,7 @@ public class Specification {
         private Long price(Duration timeInParking) {
             int billableHalfHours = billableHalfHours(timeInParking);
             long billableHours = billableHours(timeInParking);
-            return billableHours * 200L + billableHalfHours * 150L;
+            return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
         }
 
         private long billableHours(Duration timeInParking) {
