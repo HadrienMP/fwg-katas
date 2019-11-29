@@ -89,7 +89,7 @@ public class Specification {
     private static class ParkingTicket {
         private static final long FULL_HOUR_PRICE = 200L;
         private static final long HALF_HOUR_PRICE = 150L;
-        private static final int FULL_HOUR_PRICE_TIME_LIMIT = 4;
+        private static final Duration FULL_HOUR_PRICE_TIME_LIMIT = Duration.ofHours(4);
         private final LocalDateTime arrival;
         private final LocalDateTime departure;
 
@@ -101,8 +101,8 @@ public class Specification {
         private Long price() {
             TimeInParking timeInParking = new TimeInParking(Duration.between(arrival, departure));
 
-            long billableHours = Math.min(FULL_HOUR_PRICE_TIME_LIMIT, timeInParking.startedHours()) - 1;
-            long billableHalfHours = timeInParking.halfHoursAfter(Duration.ofHours(FULL_HOUR_PRICE_TIME_LIMIT));
+            long billableHours = Math.min(FULL_HOUR_PRICE_TIME_LIMIT.toHours(), timeInParking.startedHours()) - 1;
+            long billableHalfHours = timeInParking.halfHoursAfter(FULL_HOUR_PRICE_TIME_LIMIT);
             return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
         }
 
