@@ -121,7 +121,7 @@ public class Specification {
             }
 
             private long startedHours() {
-                return getTimeInParking().toHours() + 1;
+                return getTimeInParking().plusHours(1).toHours();
             }
         }
 
