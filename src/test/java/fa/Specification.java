@@ -102,10 +102,7 @@ public class Specification {
         private Long price(Duration timeInParking) {
             int billableHalfHours = 0;
             if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes()) {
-                if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 1 * 30)
-                    billableHalfHours = 1;
-                if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes() + 2 * 30)
-                    billableHalfHours = 2;
+                billableHalfHours = (int) (timeInParking.minus(Duration.ofHours(3)).toMinutes() / 30);
             }
             long billableHours = Math.min(3, timeInParking.toHours());
             return billableHours * 200L + billableHalfHours * 150L;
