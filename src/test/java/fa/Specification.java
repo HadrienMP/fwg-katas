@@ -5,7 +5,6 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.*;
@@ -86,61 +85,4 @@ public class Specification {
         assertThat(parkingTicket.price()).isEqualTo(900);
     }
 
-    private static class ParkingTicket {
-        private static final long FULL_HOUR_PRICE = 200L;
-        private static final long HALF_HOUR_PRICE = 150L;
-        private static final Duration FULL_HOUR_PRICE_TIME_LIMIT = Duration.ofHours(4);
-        private final LocalDateTime arrival;
-        private final LocalDateTime departure;
-
-        private ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
-            this.arrival = arrival;
-            this.departure = departure;
-        }
-
-        private Long price() {
-            TimeInParking timeInParking = timeInParking();
-
-            long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
-            long billableHalfHours = timeInParking.halfHoursAfter(FULL_HOUR_PRICE_TIME_LIMIT);
-            return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
-        }
-
-        private TimeInParking timeInParking() {
-            return TimeInParking.of(arrival, departure);
-        }
-
-        private static class TimeInParking {
-            private final Duration timeInParking;
-
-            public TimeInParking(Duration timeInParking) {
-                this.timeInParking = timeInParking;
-            }
-
-            private static TimeInParking of(LocalDateTime arrival, LocalDateTime departure) {
-                return new TimeInParking(Duration.between(arrival, departure));
-            }
-
-            private long startedHoursUpTo(Duration duration) {
-                return Math.min(duration.toHours(), startedHours()) - 1;
-            }
-
-            private long startedHours() {
-                return timeInParking.plusHours(1).toHours();
-            }
-
-            private long halfHoursAfter(Duration duration) {
-                return Math.max(0, startedHalfHours() - toHalfHours(duration));
-            }
-
-            private long startedHalfHours() {
-                return toHalfHours(timeInParking.plusMinutes(30));
-            }
-
-            private long toHalfHours(Duration duration) {
-                return duration.toMinutes() / 30;
-            }
-        }
-
-    }
 }
