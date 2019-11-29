@@ -23,6 +23,7 @@ class ParkingTicket {
     }
 
     Long price() {
+        if (motorcycle!=null && Duration.between(arrival, departure).toMinutes() == 1) return 0L;
         if (motorcycle!=null) return 100L;
 
         TimeInParking timeInParking = timeInParking();

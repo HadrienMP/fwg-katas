@@ -24,5 +24,17 @@ public class MotorcycleSpecification {
         assertThat(parkingTicket.price()).isEqualTo(100);
     }
 
+    @Test
+    @Parameters({
+            "1"
+    })
+    public void the_first_hour_is_free(int minutes) {
+        LocalDateTime arrival = LocalDateTime.now();
+        LocalDateTime departure = arrival.plusMinutes(minutes);
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, "Motorcycle");
+
+        assertThat(parkingTicket.price()).isEqualTo(0);
+    }
+
 
 }
