@@ -21,7 +21,7 @@ public class Specification {
      */
     @Test
     @Parameters({
-            "60,0", "120,200", "180,400"
+            "60,200", "120,400", "180,600"
     })
     public void the_first_minute_of_the_second_hour_is_still_free(int minutes, int price) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -117,12 +117,12 @@ public class Specification {
             Duration timeInParking = Duration.between(arrival, departure);
             if (timeInParking.toMinutes() > 180 + 2 * 30) return 600 + 2 * 150L;
             if (timeInParking.toMinutes() > 180 + 1 * 30) return 600 + 1 * 150L;
-            long billableHours = startedHours(timeInParking) - 1;
+            long billableHours = startedHours(timeInParking);
             return billableHours * 200L;
         }
 
         private long startedHours(Duration between) {
-            return between.toMinutes() % 60 == 0 ? between.toHours(): between.toHours() + 1;
+            return between.toHours();
         }
     }
 }
