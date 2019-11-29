@@ -110,11 +110,8 @@ public class Specification {
         }
 
         private int billableHalfHours(Duration timeInParking) {
-            int billableHalfHours = 0;
-            if (timeInParking.toMinutes() > Duration.ofHours(3).toMinutes()) {
-                billableHalfHours = (int) (timeInParking.minus(Duration.ofHours(3)).toMinutes() / 30);
-            }
-            return billableHalfHours;
+            int billableHalfHours = (int) (timeInParking.minus(Duration.ofHours(3)).toMinutes() / 30);
+            return Math.max(0, billableHalfHours);
         }
 
     }
