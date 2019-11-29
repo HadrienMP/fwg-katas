@@ -51,7 +51,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "180", "181", "182", "209"
+            "180", "181", "182", "239"
     })
     public void the_price_is_6_euros_for_a_stay_of_4_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -61,9 +61,10 @@ public class Specification {
         assertThat(parkingTicket.price()).isEqualTo(600);
     }
 
+    // 0 - 59 - 1h, 60 - 119 - 2h, 120 - 179 - 3h, 180 - 239 - 4h, 240 - 269 - 4h30
     @Test
     @Parameters({
-            "211", "212", "213", "239"
+            "240", "269"
     })
     public void the_price_is_7_euros_50_for_a_stay_of_4_started_hours_and_a_half(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
@@ -75,7 +76,7 @@ public class Specification {
 
     @Test
     @Parameters({
-            "241", "242", "243"
+            "270", "299"
     })
     public void the_price_is_9_euros_for_a_stay_of_5_started_hours(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
