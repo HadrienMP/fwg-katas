@@ -102,7 +102,7 @@ public class Specification {
 
             long billableHours = Math
                     .min(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL, timeInParking.startedHours() - 1);
-            long billableHalfHours = timeInParking.halfHoursAfter(Duration.ofHours(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL));
+            long billableHalfHours = timeInParking.halfHoursAfter(Duration.ofHours(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL + 1));
             return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
         }
 
@@ -114,7 +114,7 @@ public class Specification {
             }
 
             private long halfHoursAfter(Duration duration) {
-                return Math.max(0, getTimeInParking().minus(duration).toMinutes() / 30);
+                return Math.max(0, getTimeInParking().minus(duration.minus(Duration.ofHours(1))).toMinutes() / 30);
             }
 
             public Duration getTimeInParking() {
