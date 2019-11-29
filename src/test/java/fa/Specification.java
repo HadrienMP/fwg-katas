@@ -113,15 +113,11 @@ public class Specification {
             }
 
             private long halfHoursAfter(Duration duration) {
-                return Math.max(0, getTimeInParking().plusHours(1).minus(duration).toMinutes() / 30);
-            }
-
-            public Duration getTimeInParking() {
-                return timeInParking;
+                return Math.max(0, timeInParking.plusHours(1).minus(duration).toMinutes() / 30);
             }
 
             private long startedHours() {
-                return getTimeInParking().plusHours(1).toHours();
+                return timeInParking.plusHours(1).toHours();
             }
         }
 
