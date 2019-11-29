@@ -99,22 +99,34 @@ public class Specification {
 
         private Long price() {
             Duration timeInParking = Duration.between(arrival, departure);
-            return price(timeInParking);
+            return new TimeInParking(timeInParking).price(this);
         }
 
-        private Long price(Duration timeInParking) {
-            long billableHours = billableHours(timeInParking);
-            long billableHalfHours = billableHalfHours(timeInParking);
-            return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
-        }
-
-        private long billableHours(Duration timeInParking) {
+        private static long billableHours(Duration timeInParking) {
             return Math.min(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL, timeInParking.toHours());
         }
 
-        private long billableHalfHours(Duration timeInParking) {
+        private static long billableHalfHours(Duration timeInParking) {
             long billableHalfHours = timeInParking.minus(Duration.ofHours(MAXIMUM_NUMBER_OF_HOURS_TO_PRICE_IN_FULL)).toMinutes() / 30;
             return Math.max(0, billableHalfHours);
+        }
+
+        private static class TimeInParking {
+            private final Duration timeInParking;
+
+            public TimeInParking(Duration timeInParking) {
+                this.timeInParking = timeInParking;
+            }
+
+            public Duration getTimeInParking() {
+                return timeInParking;
+            }
+
+            private Long price(ParkingTicket parkingTicket) {
+                long billableHours = ParkingTicket.billableHours(getTimeInParking());
+                long billableHalfHours = ParkingTicket.billableHalfHours(getTimeInParking());
+                return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
+            }
         }
 
     }
