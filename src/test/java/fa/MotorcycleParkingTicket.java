@@ -1,6 +1,5 @@
 package fa;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 class MotorcycleParkingTicket {
@@ -13,7 +12,7 @@ class MotorcycleParkingTicket {
     }
 
     Long price() {
-        return new ParkingTicket(arrival, departure, false).price() / 2;
+        return new ParkingTicket(arrival, departure).price() / 2;
     }
 
 }

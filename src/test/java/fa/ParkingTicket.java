@@ -9,17 +9,13 @@ class ParkingTicket {
     private static final Duration FULL_HOUR_PRICE_TIME_LIMIT = Duration.ofHours(4);
     private final LocalDateTime arrival;
     private final LocalDateTime departure;
-    private boolean motoSmell;
 
-    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, boolean motoSmell) {
+    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
         this.arrival = arrival;
         this.departure = departure;
-        this.motoSmell = motoSmell;
     }
 
     Long price() {
-        if (motoSmell) return new ParkingTicket(arrival, departure, false).price() / 2;
-
         TimeInParking timeInParking = timeInParking();
 
         long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
