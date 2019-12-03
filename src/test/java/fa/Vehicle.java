@@ -2,5 +2,12 @@ package fa;
 
 public enum Vehicle {
     AUTOMOBILE,
-    MOTORCYCLE
+    MOTORCYCLE;
+
+    Price price() {
+        if (this == MOTORCYCLE) {
+            return new HalfPrice();
+        }
+        return new BasePrice();
+    }
 }
