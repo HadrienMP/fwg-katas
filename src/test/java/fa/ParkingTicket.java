@@ -17,14 +17,18 @@ class ParkingTicket {
 
     Long price() {
         TimeInParking timeInParking = timeInParking();
-
-        long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
-        long billableHalfHours = timeInParking.halfHoursAfter(FULL_HOUR_PRICE_TIME_LIMIT);
-        return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
+        return new BasePrice().of(timeInParking);
     }
 
     private TimeInParking timeInParking() {
         return TimeInParking.of(arrival, departure);
     }
 
+    private class BasePrice {
+        public Long of(TimeInParking timeInParking) {
+            long billableHours = timeInParking.startedHoursUpTo(FULL_HOUR_PRICE_TIME_LIMIT);
+            long billableHalfHours = timeInParking.halfHoursAfter(FULL_HOUR_PRICE_TIME_LIMIT);
+            return billableHours * FULL_HOUR_PRICE + billableHalfHours * HALF_HOUR_PRICE;
+        }
+    }
 }
