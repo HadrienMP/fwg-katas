@@ -1,8 +1,8 @@
 package fa;
 
 public enum Vehicle {
-    AUTOMOBILE(new Half(new BasePrice())),
-    MOTORCYCLE(new BasePrice());
+    AUTOMOBILE(new BasePrice()),
+    TWO_WHEELERS(new Half(new BasePrice()));
 
     private final Pricing pricing;
 
