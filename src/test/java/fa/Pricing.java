@@ -1,5 +1,5 @@
 package fa;
 
-public interface Price {
+public interface Pricing {
     long of(TimeInParking timeInParking);
 }

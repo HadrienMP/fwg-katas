@@ -15,8 +15,8 @@ class ParkingTicket {
 
     Long price() {
         TimeInParking timeInParking = timeInParking();
-        Price price = vehicle.price();
-        return price.of(timeInParking);
+        Pricing pricing = vehicle.price();
+        return pricing.of(timeInParking);
     }
 
     public TimeInParking timeInParking() {
