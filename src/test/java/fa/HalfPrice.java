@@ -1,6 +1,6 @@
 package fa;
 
-public class MotorcyclePrice {
+public class HalfPrice {
 
     private BasePrice basePrice = new BasePrice();
 

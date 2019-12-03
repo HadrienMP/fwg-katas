@@ -9,7 +9,7 @@ class MotorcycleParkingTicket {
 
     Long price() {
         TimeInParking timeInParking = parkingTicket.timeInParking();
-        return new MotorcyclePrice().of(timeInParking);
+        return new HalfPrice().of(timeInParking);
     }
 
 }
