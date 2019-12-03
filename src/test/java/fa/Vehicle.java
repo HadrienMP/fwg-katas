@@ -1,13 +1,21 @@
 package fa;
 
 public enum Vehicle {
-    AUTOMOBILE,
-    MOTORCYCLE;
+    AUTOMOBILE(new HalfPrice()),
+    MOTORCYCLE(new BasePrice());
+
+    private final Price price;
+
+    Vehicle(Price price) {
+        this.price = price;
+    }
 
     Price price() {
+        HalfPrice halfPrice = new HalfPrice();
+        BasePrice basePrice = new BasePrice();
         if (this == MOTORCYCLE) {
-            return new HalfPrice();
+            return halfPrice;
         }
-        return new BasePrice();
+        return basePrice;
     }
 }
