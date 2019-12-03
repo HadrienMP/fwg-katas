@@ -31,7 +31,7 @@ public class MotorcycleSpecification {
     public void the_first_hour_is_free(int minutes) {
         LocalDateTime arrival = LocalDateTime.now();
         LocalDateTime departure = arrival.plusMinutes(minutes);
-        MotorcycleParkingTicket parkingTicket = new MotorcycleParkingTicket(new ParkingTicket(arrival, departure, Vehicle.AUTOMOBILE));
+        ParkingTicket parkingTicket = new ParkingTicket(arrival, departure, Vehicle.MOTORCYCLE);
 
         assertThat(parkingTicket.price()).isEqualTo(0);
     }
