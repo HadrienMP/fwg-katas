@@ -16,7 +16,7 @@ class ParkingTicket {
         return new BasePrice().of(timeInParking);
     }
 
-    private TimeInParking timeInParking() {
+    public TimeInParking timeInParking() {
         return TimeInParking.of(arrival, departure);
     }
 
