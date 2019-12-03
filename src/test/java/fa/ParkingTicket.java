@@ -6,7 +6,7 @@ class ParkingTicket {
     private final LocalDateTime arrival;
     private final LocalDateTime departure;
 
-    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure) {
+    public ParkingTicket(LocalDateTime arrival, LocalDateTime departure, Vehicle vehicle) {
         this.arrival = arrival;
         this.departure = departure;
     }
