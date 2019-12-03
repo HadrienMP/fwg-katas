@@ -11,11 +11,6 @@ public enum Vehicle {
     }
 
     Price price() {
-        HalfPrice halfPrice = new HalfPrice();
-        BasePrice basePrice = new BasePrice();
-        if (this == MOTORCYCLE) {
-            return halfPrice;
-        }
-        return basePrice;
+        return this.price;
     }
 }
