@@ -14,8 +14,10 @@ class ParkingTicket {
     }
 
     Long price() {
-        if (vehicle == Vehicle.MOTORCYCLE)
-            return new HalfPrice().of(timeInParking());
+        if (vehicle == Vehicle.MOTORCYCLE) {
+            TimeInParking timeInParking = timeInParking();
+            return new HalfPrice().of(timeInParking);
+        }
         TimeInParking timeInParking = timeInParking();
         return new BasePrice().of(timeInParking);
     }
