@@ -1,7 +1,10 @@
 package fa;
 
 public class MotorcyclePrice {
-    static long of(TimeInParking timeInParking) {
-        return new BasePrice().of(timeInParking) / 2;
+
+    private BasePrice basePrice = new BasePrice();
+
+    long of(TimeInParking timeInParking) {
+        return basePrice.of(timeInParking) / 2;
     }
 }
